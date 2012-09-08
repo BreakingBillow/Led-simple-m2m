@@ -96,6 +96,8 @@ Product.func = Product.prototype = {
 		};
 		
 		return data;
+		
+		
 	}
 	
 };

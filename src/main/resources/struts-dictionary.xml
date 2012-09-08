@@ -1,0 +1,18 @@
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+	<package name="dictionary" namespace="/dictionary" extends="struts-default">
+	
+		<action name="list" method="doList" class="dictionaryActionBean" >
+			<result name="success">/dict/list.jsp</result>		
+		</action> 	
+
+		<action name="add" method="doAdd" class="dictionaryActionBean" >
+			<result name="input">/dict/add.jsp</result>		
+			<result name="success">/dict/add.jsp</result>	
+		</action> 		
+				
+	</package>
+</struts>

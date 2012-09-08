@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="com.explitech.jxc.model.Customer"  alias="Customer" />
+		<typeAlias type="com.explitech.jxc.model.Dictionary"  alias="Dictionary" />
+		<typeAlias type="com.explitech.jxc.model.Form"  alias="Form" />
+		<typeAlias type="com.explitech.jxc.model.FormDetail"  alias="FormDetail" />
+		<typeAlias type="com.explitech.jxc.model.Product"  alias="Product" />
+		<typeAlias type="com.explitech.jxc.model.Store"  alias="Store" />
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="com/explitech/jxc/mapper/CustomerMapper.xml" />
+		<mapper resource="com/explitech/jxc/mapper/DictionaryMapper.xml" />
+		<mapper resource="com/explitech/jxc/mapper/FormDetailMapper.xml" />
+		<mapper resource="com/explitech/jxc/mapper/FormMapper.xml" />
+		<mapper resource="com/explitech/jxc/mapper/ProductMapper.xml" />
+		<mapper resource="com/explitech/jxc/mapper/StoreMapper.xml" />	
+	</mappers>
+
+</configuration>

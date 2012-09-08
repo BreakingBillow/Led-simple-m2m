@@ -1,0 +1,43 @@
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+	<package name="store" namespace="/store" extends="struts-default">
+	
+		<action name="list" method="doList" class="storeActionBean" >
+			<result name="success">/store/list.jsp</result>		
+		</action> 	
+
+		<action name="add" method="doAdd" class="storeActionBean" >
+			<result name="input">/store/add.jsp</result>		
+			<result name="success">/store/add.jsp</result>	
+		</action> 		
+
+		<action name="edit" method="doEdit" class="storeActionBean" >
+			<result name="input">/store/edit.jsp</result>		
+			<result name="success">/store/edit.jsp</result>	
+		</action> 	
+				
+	</package>
+	
+	<package name="storeJson" namespace="/store" extends="json-default">		
+		<action name="listJson" method="doListJson" class="storeActionBean" >
+			<result name="success" type="json">
+	            <param name="includeProperties"> 
+	            	storeVoList.*
+	            </param> 
+			</result>
+		</action>	
+		<action name="findJson" method="doFindJson" class="storeActionBean" >
+			<result name="success" type="json">
+	            <param name="includeProperties"> 
+	            	storeVo.*
+	            </param> 
+			</result>
+		</action>				
+		
+	</package>
+	
+	
+</struts>

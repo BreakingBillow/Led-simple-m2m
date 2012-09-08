@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<context:annotation-config />
+	
+	<!-- Declare connection Beans here -->
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" autowire-candidate="true" destroy-method="close">  
+	         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>  
+	         <property name="url" value="jdbc:mysql://localhost:3306/jxc"/>  
+	         <property name="username" value="root"/>  
+	         <property name="password" value="BLUERODEO"/>  
+	         <property name="maxActive" value="100"/>  
+	         <property name="maxIdle" value="30"/>  
+	         <property name="maxWait" value="1000"/>  
+	         <property name="defaultAutoCommit" value="true"/>  
+	         <property name="removeAbandoned" value="true"/>  
+	         <property name="removeAbandonedTimeout" value="60"/>  
+	         <property name="logAbandoned" value="true"/>  
+	 </bean>    
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 指定sqlMapConfig总配置文件，订制的environment在spring容器中不在生效 -->
+		<property name="configLocation" value="classpath:sqlMapConfig.xml" />
+		<!--指定实体类映射文件，可以指定同时指定某一包以及子包下面的所有配置文件，
+		mapperLocations和configLocation有一个即可，当需要为实体类指定别名时，
+		可指定configLocation属性，再在mybatis总配置文件中采用mapper引入实体类映射文件 -->
+		<!-- <property name="mapperLocations" value="classpath*:com/xxt/ibatis/dbcp/**/*.xml"/> -->
+	</bean>	
+	
+	<!-- Declare all Action Beans here -->
+	<bean id="customerActionBean" class="com.explitech.jxc.app.CustomerAction" scope="prototype">
+	</bean>
+	<bean id="formActionBean" class="com.explitech.jxc.app.FormAction" scope="prototype">
+	</bean>	
+	<bean id="formDetailActionBean" class="com.explitech.jxc.app.FormDetailAction" scope="prototype">
+	</bean>			
+	<bean id="productActionBean" class="com.explitech.jxc.app.ProductAction" scope="prototype">
+	</bean>	
+	<bean id="storeActionBean" class="com.explitech.jxc.app.StoreAction" scope="prototype">
+	</bean>		
+	<bean id="dictionaryActionBean" class="com.explitech.jxc.app.DictionaryAction" scope="prototype">
+	</bean>	
+
+	
+	<!-- Declare all Service Beans here -->
+
+	<bean id="customerService" class="com.explitech.jxc.service.impl.CustomerServiceImpl" scope="prototype">
+	</bean>
+	<bean id="dictionaryService" class="com.explitech.jxc.service.impl.DictionaryServiceImpl" scope="prototype">
+	</bean>	
+	<bean id="formDetailService" class="com.explitech.jxc.service.impl.FormDetailServiceImpl" scope="prototype">
+	</bean>	
+	<bean id="formService" class="com.explitech.jxc.service.impl.FormServiceImpl" scope="prototype">
+	</bean>	
+	<bean id="productService" class="com.explitech.jxc.service.impl.ProductServiceImpl" scope="prototype">
+	</bean>	
+	<bean id="storeService" class="com.explitech.jxc.service.impl.StoreServiceImpl" scope="prototype">
+	</bean>				
+
+	<!--  Declare all Dao Beans Here -->
+	
+	<bean id="customerDao" class="org.mybatis.spring.mapper.MapperFactoryBean" >
+		<property name="mapperInterface" value="com.explitech.jxc.dao.CustomerMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>		
+	</bean>
+	
+	<bean id="dictionaryDao" class="org.mybatis.spring.mapper.MapperFactoryBean" >
+		<property name="mapperInterface" value="com.explitech.jxc.dao.DictionaryMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>		
+	</bean>
+	
+	<bean id="formDetailDao" class="org.mybatis.spring.mapper.MapperFactoryBean" >
+		<property name="mapperInterface" value="com.explitech.jxc.dao.FormDetailMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>		
+	</bean>
+	
+	<bean id="formDao" class="org.mybatis.spring.mapper.MapperFactoryBean" >
+		<property name="mapperInterface" value="com.explitech.jxc.dao.FormMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>		
+	</bean>
+	
+	<bean id="productDao" class="org.mybatis.spring.mapper.MapperFactoryBean" >
+		<property name="mapperInterface" value="com.explitech.jxc.dao.ProductMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>		
+	</bean>
+	
+	<bean id="storeDao" class="org.mybatis.spring.mapper.MapperFactoryBean" >
+		<property name="mapperInterface" value="com.explitech.jxc.dao.StoreMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>		
+	</bean>
+
+
+</beans>
+
+

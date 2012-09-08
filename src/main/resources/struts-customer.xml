@@ -1,0 +1,50 @@
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+	<package name="customer" namespace="/customer" extends="struts-default">
+	
+		<action name="list" method="doList" class="customerActionBean" >
+			<result name="success">/customer/list.jsp</result>		
+		</action> 	
+
+		<action name="add" method="doAdd" class="customerActionBean" >
+			<result name="input">/customer/add.jsp</result>		
+			<result name="success">/customer/add.jsp</result>	
+		</action> 		
+
+		<action name="edit" method="doEdit" class="customerActionBean" >
+			<result name="input">/customer/edit.jsp</result>		
+			<result name="success">/customer/edit.jsp</result>	
+		</action> 	
+				
+	</package>
+	
+	<package name="customerJson" namespace="/customer" extends="json-default">		
+		<action name="listJson" method="doListJson" class="customerActionBean" >
+			<result name="success" type="json">
+	            <param name="includeProperties"> 
+	            	customerVoList.*
+	            </param> 
+			</result>
+		</action>
+		<action name="listJson4Form" method="doList4FormJson" class="customerActionBean" >
+			<result name="success" type="json">
+	            <param name="includeProperties"> 
+	            	customerVoList.*
+	            </param> 
+			</result>
+		</action>		
+		<action name="findJson" method="doFindJson" class="customerActionBean" >
+			<result name="success" type="json">
+	            <param name="includeProperties"> 
+	            	customerVo.*
+	            </param> 
+			</result>
+		</action>				
+		
+	</package>
+	
+	
+</struts>

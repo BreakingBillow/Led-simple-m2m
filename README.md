@@ -3,7 +3,7 @@ Led-simple-m2m
 
 Simple MVC
 
-This a experimental demo application  
+This a experimental demo application: Led light invoicing 
 
 Back End : Struts 2.0 + Spring + MyBatis 
 

@@ -5,9 +5,9 @@ Simple MVC
 
 This a experimental demo application  
 
-Back End : Struts + Spring + MyBatis 
+Back End : Struts 2.0 + Spring + MyBatis 
 Front End : JQuery UI
 Database : MySQL
 
-Easy to read and understand.
+Really asy to read and understand.
 

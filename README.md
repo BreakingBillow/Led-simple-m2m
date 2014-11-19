@@ -15,5 +15,5 @@ Database : MySQL
 
 
 
-Really asy to read and understand.
+Really easy to read and understand.
 
